@@ -15,9 +15,13 @@ def persons():
         tsv_reader = csv.reader(file_in, delimiter='\t')
         last_names = list(tsv_reader)
 
+    with open('data/names.tsv', 'r', newline='', encoding='utf-8') as file_in:
+        tsv_reader = csv.reader(file_in, delimiter='\t')
+        names = list(tsv_reader)
+
     output_persons = []
     for _ in range(1000):
-        output_persons.append(random.choice(last_names))
+        output_persons.append([random.choice(last_names)[0], random.choice(names)[0]])
 
     with open('output/dict_persons.tsv', 'w', newline='', encoding='utf-8') as file_out:
         tsv_writer = csv.writer(file_out, delimiter='\t', lineterminator='\n')
