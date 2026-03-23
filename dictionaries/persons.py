@@ -4,6 +4,7 @@
 
 import csv
 import random
+from datetime import datetime, timedelta
 
 
 def persons():
@@ -31,10 +32,13 @@ def persons():
     for _ in range(1000):
         last_name = random.choice(last_names)
         sex = 'Муж' if last_name[1] == 'M' else 'Жен'
+        # Дата рождения выбирается из диапазона от 14 до 90 лет с момента генерации
+        birth_date = datetime.now() - timedelta(days=random.randint(5114, 32873))
         output_persons.append([last_name[0],
                                random.choice(names[last_name[1]]),
                                random.choice(patronymics[last_name[1]]),
-                               sex
+                               sex,
+                               birth_date.strftime('%Y-%m-%d')
                               ])
 
     with open('output/dict_persons.tsv', 'w', newline='', encoding='utf-8') as file_out:
