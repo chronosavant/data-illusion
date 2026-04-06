@@ -29,12 +29,15 @@ def persons():
             patronymics[sex].append(patronymic)
 
     output_persons = []
+    id_autoincrement = 0
     for _ in range(1000):
         last_name = random.choice(last_names)
         sex = 'Муж' if last_name[1] == 'M' else 'Жен'
         # Дата рождения выбирается из диапазона от 14 до 90 лет с момента генерации
         birth_date = datetime.now() - timedelta(days=random.randint(5114, 32873))
-        output_persons.append([last_name[0],
+        id_autoincrement = id_autoincrement + 1
+        output_persons.append([id_autoincrement,
+                               last_name[0],
                                random.choice(names[last_name[1]]),
                                random.choice(patronymics[last_name[1]]),
                                sex,
