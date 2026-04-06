@@ -1,7 +1,19 @@
+# Python virtual environment
+venv/
+.venv/
+env/
+.env/
+
+# PyCharm IDE files
+.idea/
+
 # Python temp files
 __pycache__/
 *.pyc
 *.py[cod]
+
+# PyCharm
+.idea/
 
 # Output directory
 output/
